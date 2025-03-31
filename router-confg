@@ -1,1 +1,227 @@
-This is a test
+Using 3267 out of 33554432 bytes
+!
+! Last configuration change at 09:22:38 UTC Mon Mar 31 2025 by admin
+!
+version 17.3
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service call-home
+platform qfp utilization monitor load 80
+platform punt-keepalive disable-kernel-core
+platform console serial
+!
+hostname router-1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no logging console
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+ip domain name test.net
+!
+!
+!
+login on-success log
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+!
+!
+!
+!
+!
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+crypto pki trustpoint SLA-TrustPoint
+ enrollment pkcs12
+ revocation-check crl
+!
+crypto pki trustpoint TP-self-signed-3529422393
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-3529422393
+ revocation-check none
+ rsakeypair TP-self-signed-3529422393
+!
+!
+crypto pki certificate chain SLA-TrustPoint
+ certificate ca 01 nvram:CiscoLicensi#1CA.cer
+crypto pki certificate chain TP-self-signed-3529422393
+ certificate self-signed 01 nvram:IOS-Self-Sig#1.cer
+!
+!
+!
+!
+!
+!
+!
+!
+license udi pid ISRV sn 9FU1J8NVS25
+diagnostic bootup level minimal
+archive
+ path bootflash:
+ write-memory
+memory free low-watermark processor 69828
+!
+!
+spanning-tree extend system-id
+!
+username admin privilege 15 secret 9 $9$hRAZRTEf7t/GtE$bcQZdaIfiDv6ncOhVXDD3mQfhqMIOTqJoRW49ydA4mc
+username test privilege 15 nopassword
+username 123 privilege 15 nopassword
+username 000 privilege 15
+username 456
+!
+redundancy
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet1
+ ip dhcp client client-id ascii 9FU1J8NVS25
+ ip address 192.168.102.21 255.255.255.0
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet2
+ no ip address
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet3
+ no ip address
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet4
+ no ip address
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet5
+ no ip address
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet6
+ no ip address
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet7
+ no ip address
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet8
+ no ip address
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+ip forward-protocol nd
+ip http server
+ip http authentication local
+ip http secure-server
+ip http client source-interface GigabitEthernet1
+!
+ip tftp source-interface GigabitEthernet1
+ip ssh version 2
+ip scp server enable
+!
+!
+!
+!
+!
+!
+!
+control-plane
+!
+!
+mgcp behavior rsip-range tgcp-only
+mgcp behavior comedia-role none
+mgcp behavior comedia-check-media-src disable
+mgcp behavior comedia-sdp-force disable
+!
+mgcp profile default
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ stopbits 1
+line aux 0
+ stopbits 1
+line vty 0 4
+ exec-timeout 0 0
+ login local
+ transport input ssh
+ transport output ssh
+!
+call-home
+ ! If contact email address in call-home is configured as sch-smart-licensing@cisco.com
+ ! the email address configured in Cisco Smart License Portal will be used as contact email address to send SCH notifications.
+ contact-email-addr sch-smart-licensing@cisco.com
+ profile "CiscoTAC-1"
+  active
+  destination transport-method http
+!
+!
+!
+!
+!
+end
