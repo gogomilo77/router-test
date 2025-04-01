@@ -146,6 +146,7 @@ memory free low-watermark processor 69828
 spanning-tree extend system-id
 !
 username admin privilege 15 secret 9 $9$hRAZRTEf7t/GtE$bcQZdaIfiDv6ncOhVXDD3mQfhqMIOTqJoRW49ydA4mc
+username 1
 !
 redundancy
 !
