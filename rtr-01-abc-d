@@ -1,6 +1,6 @@
-Using 3178 out of 33554432 bytes
+Using 3189 out of 33554432 bytes
 !
-! Last configuration change at 14:26:48 UTC Tue Apr 1 2025 by admin
+! Last configuration change at 14:44:30 UTC Tue Apr 1 2025 by admin
 !
 version 17.3
 service timestamps debug datetime msec
@@ -92,6 +92,7 @@ spanning-tree extend system-id
 username admin privilege 15 secret 9 $9$hRAZRTEf7t/GtE$bcQZdaIfiDv6ncOhVXDD3mQfhqMIOTqJoRW49ydA4mc
 username 1
 username 2
+username 3
 !
 redundancy
 !
