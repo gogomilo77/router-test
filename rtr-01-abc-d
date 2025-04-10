@@ -1,6 +1,6 @@
-Using 3189 out of 33554432 bytes
+Using 3288 out of 33554432 bytes
 !
-! Last configuration change at 14:44:30 UTC Tue Apr 1 2025 by admin
+! Last configuration change at 10:57:03 UTC Thu Apr 10 2025 by admin
 !
 version 17.3
 service timestamps debug datetime msec
@@ -180,6 +180,9 @@ ip ssh version 2
 ip scp server enable
 !
 !
+ip access-list standard 1
+ 20 permit 192.168.102.30
+ 10 deny   192.168.100.175
 !
 !
 !
@@ -206,6 +209,7 @@ line con 0
 line aux 0
  stopbits 1
 line vty 0 4
+ access-class 1 in
  exec-timeout 0 0
  login local
  transport input ssh
